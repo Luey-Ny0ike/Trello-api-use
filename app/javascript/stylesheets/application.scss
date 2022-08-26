@@ -1,0 +1,50 @@
+@import "~bootstrap/scss/bootstrap";
+
+.navbar {
+  background-color: #343951;
+  padding: 20px;
+  .navbar-brand {
+    color: white;
+  }
+}
+.main-boards {
+  margin-top: 20px;
+  .board-card {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #f3f4f5;
+    background-color: #e4ebef;
+    cursor: pointer;
+    min-height: 100px;
+    margin-bottom: 15px;
+  }
+  .board-card a {
+    text-decoration: none;
+    color: black;
+  }
+}
+.all-lists {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  .list-card {
+    padding-top: 10px;
+    padding-bottom: 25px;
+    border: 2px solid #f3f4f5;
+    background-color: #e4ebef;
+    min-width: 350px;
+    margin-right: 20px;
+    height: 75vh;
+    overflow-y: scroll;
+  }
+  .add-card-container {
+    .hidden {
+      display: none;
+    }
+    .add-link {
+      cursor: pointer;
+    }
+  }
+}
