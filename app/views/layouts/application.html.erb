@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>PizzaProjectGb</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +12,11 @@
   </head>
 
   <body>
+    <nav class="navbar">
+      <div class="mx-auto">
+        <a class="navbar-brand" href="/">Trello-ish</a>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
