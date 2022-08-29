@@ -34,16 +34,43 @@ class HomeController < ApplicationController
     title = params[:title]
     url = "#{@base_url}/cards?#{@credentials}"
     begin
-    Excon.post(url, body: {
+    response = Excon.post(url, body: {
       "name": title,
       "idBoard": board_id,
       "idList": list_id
     }.to_json, headers: { 'Content-Type' => 'application/json' })
-    redirect_to single_board_path(board_id)
+    response = JSON.parse(response.body)
+    render partial: 'card', locals: { card: response, list: response }, status: :ok
     rescue Excon::Errors => e
     @errors = e
-    render 'errors'
-    puts "RESPONSE ERROR #{e.response}"
+    render 'errors', status: :unprocessable_entity
+    end
+  end
+
+  def update_card
+    card_id = params[:id]
+    title = params[:title]
+    url = "#{@base_url}/cards/#{card_id}?#{@credentials}"
+    begin
+    response = Excon.put(url, body: {
+      "name": title
+      }.to_json, headers: { 'Content-Type' => 'application/json' })
+    response = JSON.parse(response.body)
+    render partial: 'card', locals: { card: response, list: response }, status: :ok
+    rescue Excon::Errors => e
+      @errors = e
+      render 'errors', status: :unprocessable_entity
+    end
+  end
+
+  def delete_card
+    card_id = params[:id]
+    url = "#{@base_url}/cards/#{card_id}?#{@credentials}"
+    begin
+    Excon.delete(url)
+    rescue Excon::Errors => e
+      @errors = e
+      render 'errors', status: :unprocessable_entity
     end
   end
 
