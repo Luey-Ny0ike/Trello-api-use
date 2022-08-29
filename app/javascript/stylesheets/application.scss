@@ -38,13 +38,35 @@
     margin-right: 20px;
     height: 75vh;
     overflow-y: scroll;
+    .delete-link {
+      text-decoration: none;
+      color: inherit;
+    }
+    .card-name {
+      cursor: pointer;
+    }
+    .close-btn {
+      cursor: pointer;
+    }
+  }
+  .hidden {
+    display: none;
   }
   .add-card-container {
-    .hidden {
-      display: none;
-    }
     .add-link {
       cursor: pointer;
+    }
+  }
+}
+
+// MEDIA QUERIES
+@media (min-width: 1024px) {
+  .delete-link {
+    visibility: hidden;
+  }
+  .card-body:hover {
+    .delete-link {
+      visibility: visible;
     }
   }
 }
