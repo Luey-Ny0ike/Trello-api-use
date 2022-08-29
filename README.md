@@ -41,8 +41,8 @@ I spent about 40mins writing the css(I had already installed bootstrap) and orga
 ## Improvements
 
 In terms of improvements, I would handle the calls to the api better. Maybe putting them in a service object instead of the controller.
-I would also submit the card creation without the page reload and handle it using ajax or stimulus
-I would add delete routes and implement them for cards, lists and boards
+Improve on the credentials handling, I still feel there is a better way to handle them
+Maybe add flash messages to enhance the UI/UX
 
 ---
 
