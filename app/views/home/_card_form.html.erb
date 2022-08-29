@@ -1,0 +1,13 @@
+<div class="add-card-container">
+  <div class="card hidden" data-list-target="form">
+    <div class="card-body">
+      <%= form_with url: create_card_path, html: { data: { type: "html", remote: true, action: "ajax:success->list#createSuccess" } } do |f| %>
+        <%= f.text_area :title, class: "form-control", data: { target: "list.input" }, required: true %>
+        <%= f.hidden_field :list_id, value: list["id"] %>
+        <%= f.hidden_field :board_id, value: list["idBoard"]%>
+        <%= f.submit "Add", class:"btn btn-info mt-2 mb-3" %>
+      <% end %>
+    </div>
+  </div>
+  <p class="mt-2 add-link" data-action="click->list#toggleForm">+ Add a Card</p>
+</div>

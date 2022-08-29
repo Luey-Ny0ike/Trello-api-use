@@ -1,0 +1,24 @@
+<div class="card" data-controller="card" data-card-target="card">
+  <div class="card-body row">
+    <div class="col-11">
+      <p class="card-name" data-card-target="cardName" data-action="click->card#toggleForm"><%= card["name"] %></p>
+      <div class="update-card-form hidden" data-card-target="updateForm">
+        <%= form_with url: update_card_path(card["id"]), method: :patch, html: { data: { type: "html", remote: true, action: "ajax:success->card#updateSuccess" } } do |f| %>
+          <%= f.text_area :title, value: card["name"], class: "form-control", data: { target: "card.input" }, required: true %>
+          <%= f.submit "Update", class:"btn btn-info mt-2 mb-3", data: { action: 'card#submitBtn', target: 'card.submitBtn' } %>
+          <button class="btn btn-info mt-2 mb-3 hidden" type="button" data-card-target="loadingGif" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span class="visually-hidden">Loading...</span>
+          </button>
+        <% end %>
+        <small class="close-btn" data-card-target="closeBtn" data-action="click->card#toggleForm"><em>Close</em></small>
+      </div>
+    </div>
+    <div class="col-1">
+      <%= link_to 'X', delete_card_url(card["id"]), data: { remote: true, confirm: "Are you sure?", action: "ajax:success->card#deleteCard" }, method: :delete, class:"delete-link" %>
+      <div class="spinner-border spinner-border-sm delete-link hidden" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+</div>

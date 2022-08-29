@@ -2,11 +2,7 @@
   <h3>All your boards</h3>
   <div class="row mt-4">
     <% @boards.each do |board| %>
-      <div class="col-md-3 col-sm-4 col-6 board-card">
-        <%= link_to single_board_path(board["id"], name: board["name"]) do %>
-            <p><%= board["name"] %></p>
-        <% end %>
-      </div>
+      <%= render 'board', board: board %>
     <% end %>
   </div>
 </div>

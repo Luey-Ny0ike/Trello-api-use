@@ -1,0 +1,9 @@
+<div class="list-card container" data-controller="list">
+  <h5 class="mb-3"><%= list["name"]%></h5>
+  <div data-list-target="output">
+    <% list["cards"].each do |card| %>
+      <%= render 'card', card: card, list: list %>
+    <% end %>
+  </div>
+  <%= render 'card_form', list: list %>
+</div>

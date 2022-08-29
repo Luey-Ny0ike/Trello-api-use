@@ -2,29 +2,7 @@
   <h3 class="mt-3 mb-4"><%= @name %> Board</h3>
   <div class="all-lists">
     <% @lists.each do |list| %>
-      <div class="list-card container">
-        <h5 class="mb-3"><%= list["name"]%></h5>
-        <% list["cards"].each do |card| %>
-          <div class="card">
-            <div class="card-body">
-              <p><%= card["name"] %></p>
-            </div>
-          </div>
-        <% end %>
-        <div class="add-card-container" data-action="click->hello#showForm">
-          <div class="card hidden" data-hello-target="form">
-            <div class="card-body">
-              <%= form_with url: create_card_path, method: :post do |f| %>
-                <%= f.text_area :title, class: "form-control", required: true %>
-                <%= f.hidden_field :list_id, value: list["id"] %>
-                <%= f.hidden_field :board_id, value: list["idBoard"]%>
-                <%= f.submit "Add", class:"btn btn-info mt-2 mb-3" %>
-              <% end %>
-            </div>
-          </div>
-          <p class="mt-2 add-link">+ Add a Card</p>
-        </div>
-      </div>
+      <%= render 'list', list: list %>
     <% end %>
   </div>
 </div>
